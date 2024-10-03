@@ -147,33 +147,59 @@ Console.WriteLine("Hello, World!");
 
 //Student[] students = new Student[7];
 
-List<int> list = new List<int>() { 23,55,66};
-list.Add(10);
-list.Add(17);
-list.Add(81);
-//Console.WriteLine(list[2]);
-//for(int i = 0; i < list.Count; i++)
+//List<int> list = new List<int>() { 23,55,66};
+//list.Add(10);
+//list.Add(17);
+//list.Add(81);
+////Console.WriteLine(list[2]);
+////for(int i = 0; i < list.Count; i++)
+////{
+////    Console.WriteLine(list[i]);
+////}
+//foreach (int j in list)
 //{
-//    Console.WriteLine(list[i]);
+//    Console.WriteLine(j);
 //}
-foreach (int j in list)
-{
-    Console.WriteLine(j);
-}
-list.Insert(3, 5);
+//list.Insert(3, 5);
 
-list.RemoveAt(5);
+//list.RemoveAt(5);
 
-int searchFor = 15;
-for (int i = 0; i < list.Count; i++)
+
+//int searchFor = 15;
+//for (int i = 0; i < list.Count; i++)
+//{
+//    if (list[i] == searchFor)
+//    {
+//        Console.WriteLine("Elementet er fundet på index " + i);
+//        break;
+//    }
+//    if (i == list.Count-1)
+//    {
+//        Console.WriteLine("Ikke fundet");
+//    }
+//}
+
+Dictionary<string, Student> allStudents = new Dictionary<string, Student>();
+Student student = new Student(1,"1212-12", "Peter");
+Student student2 = new Student(2, "1212-13", "Ole");
+Student student3 = new Student(3, "1212-13", "Charlotte");
+allStudents.Add(student.SSN, student);
+allStudents.Add("1212-13", student2);
+
+
+if (! allStudents.ContainsKey("1212-13") )
+    allStudents.Add("1212-13", student3);
+
+if (allStudents.ContainsKey("1212-12"))
 {
-    if (list[i] == searchFor)
-    {
-        Console.WriteLine("Elementet er fundet på index " + i);
-        break;
-    }
-    if (i == list.Count-1)
-    {
-        Console.WriteLine("Ikke fundet");
-    }
+    Student foundStudent = allStudents["1212-12"];
 }
+allStudents.Remove("1212-13");
+allStudents["1212-13"] = new Student(4, "1212-13", "Kurt");
+
+foreach(Student s in allStudents.Values)
+{
+    Console.WriteLine(s.Name);
+}
+
+
